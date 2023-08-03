@@ -1,20 +1,20 @@
 package ua.koss.client.dto;
 
-import lombok.*;
-import ua.koss.client.entity.Client;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Getter
-@Setter
-public class OrderDto {
+@Builder
+public class DishesDto {
     private Long id;
-    private Client client;
-    private String description;
-    private double orderPrice;
+    private String name;
+    private double price;
     private Set<OrderItemDto> orderItems = new HashSet<>();
 }

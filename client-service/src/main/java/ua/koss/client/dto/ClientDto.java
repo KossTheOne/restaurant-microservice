@@ -1,24 +1,20 @@
-package ua.koss.client.entity;
+package ua.koss.client.dto;
 
-import jakarta.persistence.*;
 import lombok.*;
+import ua.koss.client.entity.Order;
 
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Getter
 @Setter
-@Builder
-@Entity(name = "clients")
-public class Client {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+public class ClientDto {
     private Long id;
     private String firstName;
     private String secondName;
     private String phoneNumber;
     private String address;
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
 }
