@@ -15,24 +15,24 @@ import java.util.List;
 @RequestMapping("/orders")
 @AllArgsConstructor(onConstructor_ = @Autowired)
 public class OrderController {
-    private final IOrderService IOrderService;
+    private final IOrderService iOrderService;
     private static final Long TEST_USER_ID = 11L;
 
     @GetMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<OrderDto> getOrderDetails(@PathVariable String id) {
         Long aLong = Long.parseLong(id);
-        return ResponseEntity.ok(IOrderService.getOrderById(aLong));
+        return ResponseEntity.ok(iOrderService.getOrderById(aLong));
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<OrderDto>> getAllOrders() {
-        List<OrderDto> orderList = IOrderService.getOrderList(TEST_USER_ID);
+        List<OrderDto> orderList = iOrderService.getOrderList(TEST_USER_ID);
         return ResponseEntity.ok(orderList);
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OrderDto> createOrder(@RequestBody OrderDto orderDto) {
-        OrderDto order = IOrderService.createOrder(orderDto);
+        OrderDto order = iOrderService.createOrder(orderDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(order);
     }
 }
