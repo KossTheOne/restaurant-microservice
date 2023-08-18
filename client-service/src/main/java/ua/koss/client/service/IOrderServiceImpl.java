@@ -32,6 +32,7 @@ public class IOrderServiceImpl implements IOrderService {
 
     @Override
     public List<OrderDto> getOrderList(Long clientId) {
+        log.info(String.format("Fetching orders list with %s clientID", clientId));
         List<Order> ordersList = iOrderDao.findAllByClient_Id(clientId);
         return ordersList.stream().map(orderMapper::sourceToDestination).toList();
     }
