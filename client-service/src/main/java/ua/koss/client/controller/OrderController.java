@@ -18,7 +18,7 @@ public class OrderController {
     private final IOrderService iOrderService;
     private static final Long TEST_USER_ID = 11L;
 
-    @GetMapping(value = "/{id}", produces = "application/json")
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OrderDto> getOrderDetails(@PathVariable String id) {
         Long aLong = Long.parseLong(id);
         return ResponseEntity.ok(iOrderService.getOrderById(aLong));
